@@ -3,24 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Alicia Contreras — Portafolio</title>
+  <title>Alicia Contreras — Portafolio (Lab Cyberpunk)</title>
 
-  <!-- Fonts & icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <!-- Favicon (Añade tu propio favicon en assets/images/favicon.ico) -->
+  <link rel="icon" href="assets/images/favicon.png" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- anime.js CDN -->
+  <!-- anime.js -->
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" defer></script>
-  <script src="js/main.js" defer></script>
+
+  <!-- Animaciones (Debes crear el archivo js/animaciones.js) -->
+  <script src="js/animaciones.js" defer></script>
 </head>
 <body>
 
-  <!-- NAV -->
+  <!-- Definiciones de Gradiente (Mantenido) -->
+  <svg style="display:none;" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- Gradiente para el líquido 1 (Cyan) -->
+      <linearGradient id="liquidGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(0,255,209,0.8);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgba(0,102,84,0.3);stop-opacity:1" />
+      </linearGradient>
+      <!-- Gradiente para el líquido 2 (Magenta) -->
+      <linearGradient id="liquidGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:rgba(163,47,240,0.8);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgba(65,19,96,0.3);stop-opacity:1" />
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- canvas de partículas -->
+  <canvas id="particles"></canvas>
+
+  <!-- navegación -->
   <nav class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#">Alicia Contreras</a>
+      <a class="brand" href="#">Prof. Alicia Contreras</a>
       <ul class="menu">
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#experiencia">Experiencia</a></li>
@@ -30,67 +54,108 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- hero -->
   <header class="hero" id="hero">
     <div class="hero-grid">
       <div class="hero-text">
-        <h1 class="hero-title">Alicia Macarena Contreras Hormazábal</h1>
-        <p class="hero-sub">Full-Stack Python Developer • Profesora de Ciencias</p>
-        <p class="hero-desc">Fusiono la docencia y el desarrollo para crear herramientas educativas y aplicaciones web robustas.</p>
+        <h1 class="glitch" data-text="Alicia Macarena Contreras">Alicia Contreras Hormazábal</h1>
+        <p class="role">Full-Stack Python Developer • Profesora de Ciencias</p>
+        <p class="lead">Crear herramientas científicas y aplicaciones con estética experimental — combinando investigación, docencia y código.</p>
+
         <div class="hero-cta">
           <a class="btn btn-primary" href="#proyectos">Ver Proyectos</a>
-          <a class="btn" href="assets/Alicia_Contreras_CV.pdf" download>Descargar CV</a>
+          <a class="btn" href="assets/pdf/Alicia_Contreras_CV.pdf" download>Descargar CV</a>
         </div>
+        
+        <!-- CAJA DE ANIMACIÓN RESTRINGIDA -->
+        <div class="animation-box">
+            
+            <!-- ÁTOMO 1 -->
+            <div class="atom-container atom-1">
+                <div class="nucleus"></div>
+                <div class="orbit-path orbit1">
+                    <div class="electron electron-cyan"></div>
+                </div>
+                <div class="orbit-path orbit2">
+                    <div class="electron electron-magenta"></div>
+                </div>
+            </div>
+
+            <!-- ÁTOMO 2 -->
+            <div class="atom-container atom-2">
+                <div class="nucleus"></div>
+                <div class="orbit-path orbit1">
+                    <div class="electron electron-magenta"></div>
+                </div>
+                <div class="orbit-path orbit2">
+                    <div class="electron electron-cyan"></div>
+                </div>
+            </div>
+
+        </div>
+
       </div>
 
       <div class="hero-media">
-        <img class="avatar" src="assets/images/avatar.png" alt="Foto de Alicia">
-        <div class="glow"></div>
+        <!-- Nuevo contenedor para el efecto neon -->
+        <div class="avatar-container">
+            <img class="avatar" src="assets/images/Avatar.png" alt="Avatar Alicia">
+        </div>
+        <div class="holo">
+          <div class="scanline"></div>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- SKILLS (animated chips) -->
-  <section class="skills" aria-label="Habilidades">
+  <!-- skills -->
+  <section class="skills" id="habilidades">
     <div class="container">
       <h2>Habilidades</h2>
-      <div class="chips" id="skill-chips">
-        <span class="chip">Python</span>
-        <span class="chip">Django</span>
-        <span class="chip">JavaScript</span>
-        <span class="chip">React</span>
-        <span class="chip">PostgreSQL</span>
-        <span class="chip">HTML &amp; CSS</span>
-        <span class="chip">Bootstrap</span>
+      <div class="skills-tags">
+        <span class="skill-tag skill-python">Python</span>
+        <span class="skill-tag skill-django">Django</span>
+        <span class="skill-tag skill-js">JavaScript</span>
+        <span class="skill-tag skill-bootstrap">Bootstrap</span>
+        <span class="skill-tag skill-postgres">PostgreSQL</span>
+        <span class="skill-tag skill-htmlcss">HTML & CSS</span>
       </div>
     </div>
   </section>
 
-  <!-- PROYECTOS -->
+  <!-- proyectos -->
   <section id="proyectos" class="projects">
     <div class="container">
       <h2>Proyectos Destacados</h2>
 
       <article class="project-card">
-        <img src="assets/images/django.png" alt="Instituto de Ciencia Cuestionable screenshot">
+        <img src="assets/images/django.png" alt="Instituto de Ciencia Cuestionable">
         <div class="project-info">
           <h3>Instituto de Ciencia Cuestionable</h3>
-          <p>Sistema de gestión full-stack (Django, PostgreSQL). Temática cyberpunk y panel de administración para inventarios y experimentos.</p>
+          <p>Sistema de gestión full-stack (Django / PostgreSQL) para laboratorios. Una interfaz web con estética cyber-lab que facilita la administración de recursos y el seguimiento de proyectos internos.</p>
+          <div class="project-specs">
+            <span>Stack: Django, PostgreSQL</span>
+            <span>Objetivo: Optimizar la gestión de datos en un 40%.</span>
+          </div>
           <p class="techs">Python • Django • PostgreSQL • Bootstrap</p>
           <div class="project-links">
             <a class="btn-sm" href="https://doctoraalchemist.pythonanywhere.com/" target="_blank" rel="noopener">Ver App</a>
             <a class="btn-sm" href="https://github.com/AliciaContreras/ICC" target="_blank" rel="noopener">Código</a>
-            <a class="btn-sm" href="https://www.loom.com/share/74916b1b5bf74a958c95a01837e53114" target="_blank" rel="noopener">Video</a>
+            <a class="btn-sm btn-protocol" href="#modal-protocolo-icc">Protocolo Experimental</a>
           </div>
         </div>
       </article>
 
       <article class="project-card">
-        <img src="assets/images/bootstrap.png" alt="Portafolio Felino screenshot">
+        <img src="assets/images/bootstrap.png" alt="Portafolio Felino">
         <div class="project-info">
           <h3>Portafolio Científico Felino</h3>
-          <p>Portafolio estático responsivo con animaciones y manipulación del DOM.</p>
-          <p class="techs">HTML • CSS • JavaScript • Bootstrap</p>
+          <p>Sitio estático responsivo diseñado para propósitos educativos. Se enfoca en una UX lúdica con interacciones sutiles para explicar conceptos científicos básicos. Proyecto demostrativo de *Clean UX* y accesibilidad.</p>
+          <div class="project-specs">
+            <span>Stack: HTML, CSS, JavaScript, Bootstrap</span>
+            <span>Objetivo: Demostrar *Responsive Design* y Micro-animaciones.</span>
+          </div>
+          <p class="techs">HTML • CSS • JS • Bootstrap</p>
           <div class="project-links">
             <a class="btn-sm" href="https://github.com/AliciaContreras/MIS_GATOS" target="_blank" rel="noopener">Código</a>
           </div>
@@ -98,10 +163,14 @@
       </article>
 
       <article class="project-card">
-        <img src="assets/images/python.png" alt="Suite de Herramientas Científicas">
+        <img src="assets/images/python.png" alt="Suite Científica">
         <div class="project-info">
           <h3>Suite de Herramientas Científicas</h3>
-          <p>Scripts en Python para cálculos de física y química: masa molar, conversiones, cinemática.</p>
+          <p>Colección de scripts en Python para la automatización de cálculos complejos en física y química, y herramientas simples para uso en laboratorio y aula. Enfoque en la precisión, documentación clara y reusabilidad del código.</p>
+          <div class="project-specs">
+            <span>Stack: Python (CLI)</span>
+            <span>Objetivo: Automatizar cálculos comunes y reducir el error humano.</span>
+          </div>
           <p class="techs">Python</p>
           <div class="project-links">
             <a class="btn-sm" href="https://github.com/AliciaContreras/programas_Python_Basico" target="_blank" rel="noopener">Código</a>
@@ -112,55 +181,68 @@
     </div>
   </section>
 
-  <!-- EXPERIENCIA / TIMELINE -->
-  <section id="experiencia" class="timeline">
+  <!-- experiencia (Ahora como timeline) -->
+  <section id="experiencia" class="timeline-section">
     <div class="container">
       <h2>Experiencia</h2>
-      <ol>
+      <p class="lead-exp">Mi experiencia combina la estructura metodológica de la docencia de ciencias con la ingeniería de software. Las habilidades de diseño curricular (UX), gestión de laboratorios (QA/Testing) y comunicación técnica son directamente transferibles al desarrollo Full-Stack.</p>
+
+      <ul class="timeline-list">
         <li>
-          <strong>Desarrolladora Full-Stack</strong> — Proyectos personales con Django, despliegue en PythonAnywhere. <span class="muted">2023-2025</span>
+          <strong>Desarrolladora Full-Stack (Python/Django)</strong>
+          <span>Diseño, implementación y despliegue de aplicaciones web completas. Práctica en arquitectura de bases de datos y seguridad.</span>
+          <span class="year-chip">2023–2025</span>
         </li>
         <li>
-          <strong>Profesora de Ciencias</strong> — Diseño de material didáctico y laboratorios. <span class="muted">2016-2024</span>
+          <strong>Profesora de Ciencias (Física y Química)</strong>
+          <span>Diseño curricular, planificación y ejecución de laboratorios. Liderazgo de proyectos educativos e innovación en el aula.</span>
+          <span class="year-chip">2016–2024</span>
         </li>
-      </ol>
+      </ul>
     </div>
   </section>
 
-  <!-- SOBRE MÍ -->
+  <!-- sobre mi -->
   <section id="sobre-mi" class="about">
     <div class="container">
-      <h2>Sobre mí</h2>
-      <p>Docente y desarrolladora que aplica la lógica científica al software. Me interesan los proyectos que conectan educación, datos y experiencia de usuario.</p>
+      <h2>Sobre mí: Mi Filosofía</h2>
+      <p>Mi código es mi laboratorio. Aplico la lógica de la Química y la Física al diseño de sistemas robustos: si un sistema es estable y eficiente en la teoría, debe serlo en la práctica.</p>
+      <ul class="about-list">
+        <li>**Clean Code:** La documentación es la clave para la reusabilidad.</li>
+        <li>**UX/Diseño de Sistemas:** Un diseño bien planeado reduce la entropía.</li>
+        <li>**Metodología Científica:** La iteración y el testing son fundamentales para el desarrollo.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- CONTACTO -->
+  <!-- contacto -->
   <section id="contacto" class="contact">
     <div class="container">
       <h2>Contacto</h2>
-      <p>¿Tienes una propuesta o colaboración? Escríbeme:</p>
       <ul class="contact-list">
         <li>Email: <a href="mailto:alicia.contreras.h@mail.pucv.cl">alicia.contreras.h@mail.pucv.cl</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/alicia-contreras-h" target="_blank" rel="noopener">linkedin.com/in/alicia-contreras-h</a></li>
-        <li>GitHub: <a href="https://github.com/AliciaContreras" target="_blank" rel="noopener">github.com/AliciaContreras</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/alicia-contreras-h" target="_blank">linkedin.com/in/alicia-contreras-h</a></li>
+        <li>GitHub: <a href="https://github.com/AliciaContreras" target="_blank">github.com/AliciaContreras</a></li>
       </ul>
 
-      <!-- simple contact form (sends mailto) -->
-      <form class="contact-form" action="mailto:alicia.contreras.h@mail.pucv.cl" method="get" enctype="text/plain">
+      <!-- Formulario de Contacto (Usando Formspree como ejemplo) -->
+      <form class="contact-form" action="https://formspree.io/f/your-unique-code" method="POST">
+        <input type="email" name="_replyto" placeholder="Tu Email" required>
         <input name="subject" placeholder="Asunto" required>
         <textarea name="body" placeholder="Tu mensaje..." required></textarea>
-        <button class="btn btn-primary" type="submit">Enviar (email)</button>
+        <button class="btn btn-primary" type="submit">Enviar Mensaje</button>
       </form>
+      <p class="form-tip">
+          *Este formulario necesita un servicio como <a href="https://formspree.io/" target="_blank" rel="noopener">Formspree</a> para funcionar.
+      </p>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; <span id="year"></span> Alicia Contreras. Todos los derechos reservados.</p>
+      <p>&copy; <span id="year"></span> Alicia Contreras — Instituto Experimental</p>
     </div>
   </footer>
-
 </body>
 </html>
